@@ -61,28 +61,31 @@
                 and create_time = #{createTime}
             </if>
         </where>
+        order by sort
     </select>
 
     <select id="selectFirstLevelHeadingById" parameterType="Long"
             resultMap="FirstLevelHeadingLevelHeadingContentResult">
-        SELECT a.id,
-               a.headline,
-               a.region,
-               a.sort,
-               a.create_by,
-               a.create_time,
-               a.update_by,
-               a.update_time,
-               b.id                  AS sub_id,
-               b.level_heading_id    AS sub_level_heading_id,
-               b.picture             AS sub_picture,
-               b.brief_introduction  AS sub_brief_introduction,
-               b.policy              AS sub_policy,
-               b.project_type        AS sub_project_type,
-               b.contact_information AS sub_contact_information,
-               b.link_url            AS sub_link_url
-        FROM first_level_heading a
-                 LEFT JOIN level_heading_content b ON b.level_heading_id = a.id
+        SELECT
+            a.id,
+            a.headline,
+            a.sort,
+            a.create_by,
+            a.create_time,
+            a.update_by,
+            a.update_time,
+            b.id AS sub_id,
+            b.level_heading_id AS sub_level_heading_id,
+            b.picture AS sub_picture,
+            b.brief_introduction AS sub_brief_introduction,
+            b.policy AS sub_policy,
+            b.project_type AS sub_project_type,
+            b.contact_information AS sub_contact_information,
+            b.link_url AS sub_link_url,
+            b.region
+        FROM
+            first_level_heading a
+        LEFT JOIN level_heading_content b ON b.level_heading_id = a.id
         WHERE a.id = #{id}
     </select>
 
@@ -192,10 +195,10 @@
     </delete>
 
     <insert id="batchLevelHeadingContent">
-        insert into level_heading_content( id, level_heading_id, picture, brief_introduction, policy, project_type,
+        insert into level_heading_content( id, level_heading_id, region, picture, brief_introduction, policy, project_type,
         contact_information, link_url) values
         <foreach item="item" index="index" collection="list" separator=",">
-            ( #{item.id}, #{item.levelHeadingId}, #{item.picture}, #{item.briefIntroduction}, #{item.policy},
+            ( #{item.id}, #{item.levelHeadingId}, #{region}, #{item.picture}, #{item.briefIntroduction}, #{item.policy},
             #{item.projectType}, #{item.contactInformation}, #{item.linkUrl})
         </foreach>
     </insert>

@@ -1,7 +1,5 @@
 package com.niceally.webpage.domain;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.web.domain.BaseEntity;
 
@@ -24,7 +22,11 @@ public class LevelHeadingContent extends BaseEntity {
      */
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private Long levelHeadingId;
-
+    /**
+     * 名称
+     */
+    @Excel(name = "名称")
+    private String region;
     /**
      * 图片
      */
@@ -61,81 +63,90 @@ public class LevelHeadingContent extends BaseEntity {
     @Excel(name = "链接地址")
     private String linkUrl;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
     }
 
-    public void setLevelHeadingId(Long levelHeadingId) {
-        this.levelHeadingId = levelHeadingId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getLevelHeadingId() {
         return levelHeadingId;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setLevelHeadingId(Long levelHeadingId) {
+        this.levelHeadingId = levelHeadingId;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getPicture() {
         return picture;
     }
 
-    public void setBriefIntroduction(String briefIntroduction) {
-        this.briefIntroduction = briefIntroduction;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getBriefIntroduction() {
         return briefIntroduction;
     }
 
-    public void setPolicy(String policy) {
-        this.policy = policy;
+    public void setBriefIntroduction(String briefIntroduction) {
+        this.briefIntroduction = briefIntroduction;
     }
 
     public String getPolicy() {
         return policy;
     }
 
-    public void setProjectType(String projectType) {
-        this.projectType = projectType;
+    public void setPolicy(String policy) {
+        this.policy = policy;
     }
 
     public String getProjectType() {
         return projectType;
     }
 
-    public void setContactInformation(String contactInformation) {
-        this.contactInformation = contactInformation;
+    public void setProjectType(String projectType) {
+        this.projectType = projectType;
     }
 
     public String getContactInformation() {
         return contactInformation;
     }
 
-    public void setLinkUrl(String linkUrl) {
-        this.linkUrl = linkUrl;
+    public void setContactInformation(String contactInformation) {
+        this.contactInformation = contactInformation;
     }
 
     public String getLinkUrl() {
         return linkUrl;
     }
 
+    public void setLinkUrl(String linkUrl) {
+        this.linkUrl = linkUrl;
+    }
+
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-                .append("id", getId())
-                .append("levelHeadingId", getLevelHeadingId())
-                .append("picture", getPicture())
-                .append("briefIntroduction", getBriefIntroduction())
-                .append("policy", getPolicy())
-                .append("projectType", getProjectType())
-                .append("contactInformation", getContactInformation())
-                .append("linkUrl", getLinkUrl())
-                .toString();
+        return "LevelHeadingContent{" +
+                "id=" + id +
+                ", levelHeadingId=" + levelHeadingId +
+                ", region='" + region + '\'' +
+                ", picture='" + picture + '\'' +
+                ", briefIntroduction='" + briefIntroduction + '\'' +
+                ", policy='" + policy + '\'' +
+                ", projectType='" + projectType + '\'' +
+                ", contactInformation='" + contactInformation + '\'' +
+                ", linkUrl='" + linkUrl + '\'' +
+                '}';
     }
 }

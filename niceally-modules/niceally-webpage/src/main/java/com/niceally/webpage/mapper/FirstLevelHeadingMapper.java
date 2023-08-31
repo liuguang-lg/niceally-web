@@ -18,7 +18,7 @@ public interface FirstLevelHeadingMapper {
      * @param id 一级标题主键
      * @return 一级标题
      */
-    public FirstLevelHeading selectFirstLevelHeadingById(Long id);
+    FirstLevelHeading selectFirstLevelHeadingById(Long id);
 
     /**
      * 查询一级标题列表
@@ -26,7 +26,7 @@ public interface FirstLevelHeadingMapper {
      * @param firstLevelHeading 一级标题
      * @return 一级标题集合
      */
-    public List<FirstLevelHeading> selectFirstLevelHeadingList(FirstLevelHeading firstLevelHeading);
+    List<FirstLevelHeading> selectFirstLevelHeadingList(FirstLevelHeading firstLevelHeading);
 
     /**
      * 新增一级标题
@@ -34,7 +34,7 @@ public interface FirstLevelHeadingMapper {
      * @param firstLevelHeading 一级标题
      * @return 结果
      */
-    public int insertFirstLevelHeading(FirstLevelHeading firstLevelHeading);
+    int insertFirstLevelHeading(FirstLevelHeading firstLevelHeading);
 
     /**
      * 修改一级标题
@@ -42,7 +42,7 @@ public interface FirstLevelHeadingMapper {
      * @param firstLevelHeading 一级标题
      * @return 结果
      */
-    public int updateFirstLevelHeading(FirstLevelHeading firstLevelHeading);
+    int updateFirstLevelHeading(FirstLevelHeading firstLevelHeading);
 
     /**
      * 删除一级标题
@@ -50,7 +50,7 @@ public interface FirstLevelHeadingMapper {
      * @param id 一级标题主键
      * @return 结果
      */
-    public int deleteFirstLevelHeadingById(Long id);
+    int deleteFirstLevelHeadingById(Long id);
 
     /**
      * 批量删除一级标题
@@ -58,7 +58,7 @@ public interface FirstLevelHeadingMapper {
      * @param ids 需要删除的数据主键集合
      * @return 结果
      */
-    public int deleteFirstLevelHeadingByIds(Long[] ids);
+    int deleteFirstLevelHeadingByIds(Long[] ids);
 
     /**
      * 批量删除内容
@@ -66,7 +66,7 @@ public interface FirstLevelHeadingMapper {
      * @param ids 需要删除的数据主键集合
      * @return 结果
      */
-    public int deleteLevelHeadingContentByLevelHeadingIds(Long[] ids);
+    int deleteLevelHeadingContentByLevelHeadingIds(Long[] ids);
 
     /**
      * 批量新增内容
@@ -74,7 +74,7 @@ public interface FirstLevelHeadingMapper {
      * @param levelHeadingContentList 内容列表
      * @return 结果
      */
-    public int batchLevelHeadingContent(List<LevelHeadingContent> levelHeadingContentList);
+    int batchLevelHeadingContent(List<LevelHeadingContent> levelHeadingContentList);
 
 
     /**
@@ -83,5 +83,5 @@ public interface FirstLevelHeadingMapper {
      * @param id 一级标题ID
      * @return 结果
      */
-    public int deleteLevelHeadingContentByLevelHeadingId(Long id);
+    int deleteLevelHeadingContentByLevelHeadingId(Long id);
 }

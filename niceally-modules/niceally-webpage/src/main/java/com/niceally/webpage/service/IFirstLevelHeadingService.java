@@ -17,7 +17,7 @@ public interface IFirstLevelHeadingService {
      * @param id 一级标题主键
      * @return 一级标题
      */
-    public FirstLevelHeading selectFirstLevelHeadingById(Long id);
+    FirstLevelHeading selectFirstLevelHeadingById(Long id);
 
     /**
      * 查询一级标题列表
@@ -25,7 +25,7 @@ public interface IFirstLevelHeadingService {
      * @param firstLevelHeading 一级标题
      * @return 一级标题集合
      */
-    public List<FirstLevelHeading> selectFirstLevelHeadingList(FirstLevelHeading firstLevelHeading);
+    List<FirstLevelHeading> selectFirstLevelHeadingList(FirstLevelHeading firstLevelHeading);
 
     /**
      * 新增一级标题
@@ -33,7 +33,7 @@ public interface IFirstLevelHeadingService {
      * @param firstLevelHeading 一级标题
      * @return 结果
      */
-    public int insertFirstLevelHeading(FirstLevelHeading firstLevelHeading);
+    int insertFirstLevelHeading(FirstLevelHeading firstLevelHeading);
 
     /**
      * 修改一级标题
@@ -41,7 +41,7 @@ public interface IFirstLevelHeadingService {
      * @param firstLevelHeading 一级标题
      * @return 结果
      */
-    public int updateFirstLevelHeading(FirstLevelHeading firstLevelHeading);
+    int updateFirstLevelHeading(FirstLevelHeading firstLevelHeading);
 
     /**
      * 批量删除一级标题
@@ -49,7 +49,7 @@ public interface IFirstLevelHeadingService {
      * @param ids 需要删除的一级标题主键集合
      * @return 结果
      */
-    public int deleteFirstLevelHeadingByIds(Long[] ids);
+    int deleteFirstLevelHeadingByIds(Long[] ids);
 
     /**
      * 删除一级标题信息
@@ -57,5 +57,5 @@ public interface IFirstLevelHeadingService {
      * @param id 一级标题主键
      * @return 结果
      */
-    public int deleteFirstLevelHeadingById(Long id);
+    int deleteFirstLevelHeadingById(Long id);
 }
