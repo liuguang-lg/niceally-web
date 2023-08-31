@@ -28,4 +28,4 @@ spring:
         # 共享配置
         shared-configs:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-      namespace: daf3c834-7369-478b-a870-613ba3019537
+        namespace: daf3c834-7369-478b-a870-613ba3019537
