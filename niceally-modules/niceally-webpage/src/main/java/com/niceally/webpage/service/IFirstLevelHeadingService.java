@@ -17,7 +17,7 @@ public interface IFirstLevelHeadingService {
      * @param id 一级标题主键
      * @return 一级标题
      */
-    FirstLevelHeading selectFirstLevelHeadingById(Long id);
+    FirstLevelHeading selectFirstLevelHeadingById(String id);
 
     /**
      * 查询一级标题列表
@@ -49,7 +49,7 @@ public interface IFirstLevelHeadingService {
      * @param ids 需要删除的一级标题主键集合
      * @return 结果
      */
-    int deleteFirstLevelHeadingByIds(Long[] ids);
+    int deleteFirstLevelHeadingByIds(String[] ids);
 
     /**
      * 删除一级标题信息
@@ -57,5 +57,12 @@ public interface IFirstLevelHeadingService {
      * @param id 一级标题主键
      * @return 结果
      */
-    int deleteFirstLevelHeadingById(Long id);
+    int deleteFirstLevelHeadingById(String id);
+
+    /**
+     * 删除子级标题
+     * @param ids
+     * @return
+     */
+    int deleteLevelHeadingByIds(String[] ids);
 }

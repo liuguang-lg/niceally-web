@@ -2,6 +2,7 @@ package com.niceally.webpage.mapper;
 
 import com.niceally.webpage.domain.FirstLevelHeading;
 import com.niceally.webpage.domain.LevelHeadingContent;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface FirstLevelHeadingMapper {
      * @param id 一级标题主键
      * @return 一级标题
      */
-    FirstLevelHeading selectFirstLevelHeadingById(Long id);
+    FirstLevelHeading selectFirstLevelHeadingById(String id);
 
     /**
      * 查询一级标题列表
@@ -50,7 +51,7 @@ public interface FirstLevelHeadingMapper {
      * @param id 一级标题主键
      * @return 结果
      */
-    int deleteFirstLevelHeadingById(Long id);
+    int deleteFirstLevelHeadingById(String id);
 
     /**
      * 批量删除一级标题
@@ -58,7 +59,7 @@ public interface FirstLevelHeadingMapper {
      * @param ids 需要删除的数据主键集合
      * @return 结果
      */
-    int deleteFirstLevelHeadingByIds(Long[] ids);
+    int deleteFirstLevelHeadingByIds(String[] ids);
 
     /**
      * 批量删除内容
@@ -66,7 +67,7 @@ public interface FirstLevelHeadingMapper {
      * @param ids 需要删除的数据主键集合
      * @return 结果
      */
-    int deleteLevelHeadingContentByLevelHeadingIds(Long[] ids);
+    int deleteLevelHeadingContentByLevelHeadingIds(String[] ids);
 
     /**
      * 批量新增内容
@@ -83,5 +84,13 @@ public interface FirstLevelHeadingMapper {
      * @param id 一级标题ID
      * @return 结果
      */
-    int deleteLevelHeadingContentByLevelHeadingId(Long id);
+    int deleteLevelHeadingContentByLevelHeadingId(String id);
+
+    /**
+     * 删除子级标题
+     *
+     * @param ids
+     * @return
+     */
+    int deleteLevelHeadingByIds(String[] ids);
 }

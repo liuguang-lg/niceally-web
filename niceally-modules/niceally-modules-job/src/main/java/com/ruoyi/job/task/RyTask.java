@@ -19,6 +19,6 @@ public class RyTask {
     }
 
     public void ryNoParams() {
-        System.out.println("执行无参方法");
+        System.err.println("执行无参方法");
     }
 }

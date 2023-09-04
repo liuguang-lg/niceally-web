@@ -2,6 +2,7 @@ package com.niceally.webpage.controller;
 
 import com.niceally.webpage.domain.FirstLevelHeading;
 import com.niceally.webpage.service.IFirstLevelHeadingService;
+import com.ruoyi.common.core.utils.StringUtils;
 import com.ruoyi.common.core.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.web.controller.BaseController;
 import com.ruoyi.common.core.web.domain.AjaxResult;
@@ -33,7 +34,8 @@ public class FirstLevelHeadingController extends BaseController {
      */
 //    @RequiresPermissions("heading:heading:list")
     @GetMapping("/list")
-    public TableDataInfo list(FirstLevelHeading firstLevelHeading) {
+    public TableDataInfo list(FirstLevelHeading firstLevelHeading, String paramsO) {
+        System.err.println("params---" + paramsO);
         startPage();
         List<FirstLevelHeading> list = firstLevelHeadingService.selectFirstLevelHeadingList(firstLevelHeading);
         return getDataTable(list);
@@ -56,7 +58,7 @@ public class FirstLevelHeadingController extends BaseController {
      */
 //    @RequiresPermissions("heading:heading:query")
     @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") Long id) {
+    public AjaxResult getInfo(@PathVariable("id") String id) {
         return success(firstLevelHeadingService.selectFirstLevelHeadingById(id));
     }
 
@@ -75,7 +77,7 @@ public class FirstLevelHeadingController extends BaseController {
      */
     @RequiresPermissions("heading:heading:edit")
     @Log(title = "一级标题", businessType = BusinessType.UPDATE)
-    @PutMapping
+    @PostMapping("/edit")
     public AjaxResult edit(@RequestBody FirstLevelHeading firstLevelHeading) {
         return toAjax(firstLevelHeadingService.updateFirstLevelHeading(firstLevelHeading));
     }
@@ -86,7 +88,43 @@ public class FirstLevelHeadingController extends BaseController {
     @RequiresPermissions("heading:heading:remove")
     @Log(title = "一级标题", businessType = BusinessType.DELETE)
     @DeleteMapping("/{ids}")
-    public AjaxResult remove(@PathVariable Long[] ids) {
+    public AjaxResult remove(@PathVariable String[] ids) {
         return toAjax(firstLevelHeadingService.deleteFirstLevelHeadingByIds(ids));
+    }
+
+    /**
+     * 新增子级标题
+     */
+    @RequiresPermissions("heading:heading:add")
+    @Log(title = "新增子级标题", businessType = BusinessType.INSERT)
+    @PostMapping("/addSub")
+    public AjaxResult addSub(@RequestBody FirstLevelHeading firstLevelHeading) {
+        if (StringUtils.isBlank(firstLevelHeading.getParentId())) {
+            return error("参数异常！");
+        }
+        return success(firstLevelHeadingService.insertFirstLevelHeading(firstLevelHeading));
+    }
+
+    /**
+     * 修改子级标题
+     */
+    @RequiresPermissions("heading:heading:edit")
+    @Log(title = "修改子级标题", businessType = BusinessType.UPDATE)
+    @PostMapping("/editSub")
+    public AjaxResult editSub(@RequestBody FirstLevelHeading firstLevelHeading) {
+        if (StringUtils.isBlank(firstLevelHeading.getParentId())) {
+            return error("参数异常！");
+        }
+        return toAjax(firstLevelHeadingService.updateFirstLevelHeading(firstLevelHeading));
+    }
+
+    /**
+     * 删除子级标题
+     */
+    @RequiresPermissions("heading:heading:remove")
+    @Log(title = "删除子级标题", businessType = BusinessType.DELETE)
+    @DeleteMapping("/deleteSub")
+    public AjaxResult deleteSub(String[] ids) {
+        return toAjax(firstLevelHeadingService.deleteLevelHeadingByIds(ids));
     }
 }

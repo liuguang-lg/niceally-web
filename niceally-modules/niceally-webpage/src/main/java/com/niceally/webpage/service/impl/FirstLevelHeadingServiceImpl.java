@@ -4,6 +4,7 @@ import com.niceally.webpage.domain.FirstLevelHeading;
 import com.niceally.webpage.domain.LevelHeadingContent;
 import com.niceally.webpage.mapper.FirstLevelHeadingMapper;
 import com.niceally.webpage.service.IFirstLevelHeadingService;
+import com.niceally.webpage.utils.UUidUtils;
 import com.ruoyi.common.core.utils.DateUtils;
 import com.ruoyi.common.core.utils.StringUtils;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class FirstLevelHeadingServiceImpl implements IFirstLevelHeadingService {
      * @return 一级标题
      */
     @Override
-    public FirstLevelHeading selectFirstLevelHeadingById(Long id) {
+    public FirstLevelHeading selectFirstLevelHeadingById(String id) {
         return firstLevelHeadingMapper.selectFirstLevelHeadingById(id);
     }
 
@@ -55,6 +56,7 @@ public class FirstLevelHeadingServiceImpl implements IFirstLevelHeadingService {
     @Transactional
     @Override
     public int insertFirstLevelHeading(FirstLevelHeading firstLevelHeading) {
+        firstLevelHeading.setId(UUidUtils.getUUid());
         int rows = firstLevelHeadingMapper.insertFirstLevelHeading(firstLevelHeading);
         insertLevelHeadingContent(firstLevelHeading);
         return rows;
@@ -83,7 +85,7 @@ public class FirstLevelHeadingServiceImpl implements IFirstLevelHeadingService {
      */
     @Transactional
     @Override
-    public int deleteFirstLevelHeadingByIds(Long[] ids) {
+    public int deleteFirstLevelHeadingByIds(String[] ids) {
         firstLevelHeadingMapper.deleteLevelHeadingContentByLevelHeadingIds(ids);
         return firstLevelHeadingMapper.deleteFirstLevelHeadingByIds(ids);
     }
@@ -96,7 +98,7 @@ public class FirstLevelHeadingServiceImpl implements IFirstLevelHeadingService {
      */
     @Transactional
     @Override
-    public int deleteFirstLevelHeadingById(Long id) {
+    public int deleteFirstLevelHeadingById(String id) {
         firstLevelHeadingMapper.deleteLevelHeadingContentByLevelHeadingId(id);
         return firstLevelHeadingMapper.deleteFirstLevelHeadingById(id);
     }
@@ -113,4 +115,15 @@ public class FirstLevelHeadingServiceImpl implements IFirstLevelHeadingService {
             firstLevelHeadingMapper.batchLevelHeadingContent(levelHeadingContentList);
         }
     }
+
+    /**
+     * 删除子级标题
+     * @param ids
+     * @return
+     */
+    @Override
+    public int deleteLevelHeadingByIds(String[] ids) {
+        return firstLevelHeadingMapper.deleteLevelHeadingByIds(ids);
+    }
+
 }

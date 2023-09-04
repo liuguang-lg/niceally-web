@@ -2,6 +2,7 @@ package com.niceally.webpage.domain;
 
 import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.web.domain.BaseEntity;
+import lombok.Data;
 
 /**
  * 内容对象 level_heading_content
@@ -9,6 +10,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  * @date 2023-08-25
  */
+@Data
 public class LevelHeadingContent extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
@@ -20,8 +22,7 @@ public class LevelHeadingContent extends BaseEntity {
     /**
      * $column.columnComment
      */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
-    private Long levelHeadingId;
+    private String levelHeadingId;
     /**
      * 名称
      */
@@ -63,90 +64,4 @@ public class LevelHeadingContent extends BaseEntity {
     @Excel(name = "链接地址")
     private String linkUrl;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getLevelHeadingId() {
-        return levelHeadingId;
-    }
-
-    public void setLevelHeadingId(Long levelHeadingId) {
-        this.levelHeadingId = levelHeadingId;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public String getBriefIntroduction() {
-        return briefIntroduction;
-    }
-
-    public void setBriefIntroduction(String briefIntroduction) {
-        this.briefIntroduction = briefIntroduction;
-    }
-
-    public String getPolicy() {
-        return policy;
-    }
-
-    public void setPolicy(String policy) {
-        this.policy = policy;
-    }
-
-    public String getProjectType() {
-        return projectType;
-    }
-
-    public void setProjectType(String projectType) {
-        this.projectType = projectType;
-    }
-
-    public String getContactInformation() {
-        return contactInformation;
-    }
-
-    public void setContactInformation(String contactInformation) {
-        this.contactInformation = contactInformation;
-    }
-
-    public String getLinkUrl() {
-        return linkUrl;
-    }
-
-    public void setLinkUrl(String linkUrl) {
-        this.linkUrl = linkUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "LevelHeadingContent{" +
-                "id=" + id +
-                ", levelHeadingId=" + levelHeadingId +
-                ", region='" + region + '\'' +
-                ", picture='" + picture + '\'' +
-                ", briefIntroduction='" + briefIntroduction + '\'' +
-                ", policy='" + policy + '\'' +
-                ", projectType='" + projectType + '\'' +
-                ", contactInformation='" + contactInformation + '\'' +
-                ", linkUrl='" + linkUrl + '\'' +
-                '}';
-    }
 }
